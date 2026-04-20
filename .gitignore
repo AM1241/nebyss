@@ -1,0 +1,9 @@
+# nebyss-nuxt
+node_modules/
+dist/
+.nuxt/
+.output/
+.data/
+.nitro/
+*.log
+.DS_Store
