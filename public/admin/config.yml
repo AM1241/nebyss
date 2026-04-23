@@ -1,0 +1,63 @@
+backend:
+  name: github
+  repo: vaszafei/nebyss
+  branch: main
+  # Netlify-hosted OAuth — no third-party proxy required.
+  # Enabled via: Netlify Site settings → Access & security → OAuth → GitHub.
+  base_url: https://nebyss.netlify.app
+  auth_endpoint: /.netlify/functions/auth
+
+# Drafts open as PRs against `main` instead of pushing directly.
+# Each PR triggers a Netlify Deploy Preview that the editor uses to review changes.
+publish_mode: editorial_workflow
+
+# Local editing: run `npx decap-server` and uncomment the line below.
+# local_backend: true
+
+media_folder: "public/img/uploads"
+public_folder: "/img/uploads"
+
+collections:
+  - name: "posts"
+    label: "Blog Posts"
+    label_singular: "Post"
+    folder: "content/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    preview_path: "posts/{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+      - { label: "Author", name: "author", widget: "string", default: "Nebyss Innovation" }
+      - { label: "Excerpt", name: "excerpt", widget: "text", hint: "Short summary shown in listing cards." }
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        allow_add: true
+        field: { label: "Tag", name: "tag", widget: "string" }
+      - { label: "Cover Image", name: "cover", widget: "image", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "news"
+    label: "News"
+    label_singular: "News Item"
+    folder: "content/news"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    preview_path: "news/{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+      - { label: "Excerpt", name: "excerpt", widget: "text", hint: "Short summary shown in listing cards." }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "Announcement", value: "announcement" }
+          - { label: "Partnership", value: "partnership" }
+          - { label: "Research", value: "research" }
+          - { label: "Event", value: "event" }
+          - { label: "Press", value: "press" }
+        default: "announcement"
+      - { label: "External Link", name: "external_link", widget: "string", required: false, hint: "If this news links to an external source, paste the URL here." }
+      - { label: "Body", name: "body", widget: "markdown" }

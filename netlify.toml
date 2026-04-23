@@ -6,7 +6,18 @@
   NODE_VERSION = "20"
   NITRO_PRESET = "static"
 
+# Deploy Previews (PRs opened by Decap editorial workflow) build identically.
+[context.deploy-preview]
+  command = "pnpm generate"
+
+# Decap CMS shell is a single-page app — let it own /admin/*.
 [[redirects]]
-  from   = "/*"
-  to     = "/index.html"
+  from   = "/admin/*"
+  to     = "/admin/index.html"
   status = 200
+
+# Long-cache hashed Nuxt assets.
+[[headers]]
+  for = "/_nuxt/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
