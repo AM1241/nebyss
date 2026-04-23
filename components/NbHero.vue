@@ -363,9 +363,15 @@ onUnmounted(() => {
   }
 }
 
+@media (max-width: 1024px) and (min-width: 769px) {
+  .nb-hero {
+    padding-top: 100px;
+  }
+}
+
 @media (max-width: 768px) {
   .nb-hero {
-    padding: 120px 0 100px;
+    padding: 140px 0 100px;
     min-height: auto;
   }
 
