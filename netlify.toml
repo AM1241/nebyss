@@ -8,7 +8,7 @@
 
 # Deploy Previews (PRs opened by Decap editorial workflow) build identically.
 [context.deploy-preview]
-  command = "pnpm generate"
+  command = "npm run generate"
 
 # Decap CMS shell is a single-page app — let it own /admin/*.
 [[redirects]]
