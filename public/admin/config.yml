@@ -1,11 +1,6 @@
 backend:
-  name: github
-  repo: AM1241/nebyss
+  name: git-gateway
   branch: main
-  # Netlify-hosted OAuth — no third-party proxy required.
-  # Enabled via: Netlify Site settings → Access & security → OAuth → GitHub.
-  base_url: https://nebyss.netlify.app
-  auth_endpoint: /.netlify/functions/auth
 
 # Drafts open as PRs against `main` instead of pushing directly.
 # Each PR triggers a Netlify Deploy Preview that the editor uses to review changes.

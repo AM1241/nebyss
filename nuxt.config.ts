@@ -3,6 +3,16 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: false },
 
+  modules: ['@nuxt/content'],
+
+  content: {
+    highlight: false,
+    markdown: {
+      remarkPlugins: [],
+      rehypePlugins: [],
+    },
+  },
+
   app: {
     head: {
       htmlAttrs: { lang: 'en' },
@@ -25,6 +35,10 @@ export default defineNuxtConfig({
           href: 'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap',
         },
       ],
+      script: [
+        // Netlify Identity widget — redirects editors back to /admin after login
+        { src: 'https://identity.netlify.com/v1/netlify-identity-widget.js', defer: true },
+      ],
     },
 
     pageTransition: { name: 'page', mode: 'out-in' },
@@ -34,5 +48,10 @@ export default defineNuxtConfig({
 
   routeRules: {
     '/': { prerender: true },
+    '/posts': { prerender: true },
+    '/posts/**': { prerender: true },
+    '/news': { prerender: true },
+    '/news/**': { prerender: true },
+    '/admin/**': { ssr: false },
   },
 })
