@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: vaszafei/nebyss
+  repo: AM1241/nebyss
   branch: main
   # Netlify-hosted OAuth — no third-party proxy required.
   # Enabled via: Netlify Site settings → Access & security → OAuth → GitHub.
